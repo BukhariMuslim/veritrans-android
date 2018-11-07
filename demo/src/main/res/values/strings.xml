@@ -71,6 +71,7 @@
     <string name="custom_permata_va_enable_title">Enable Custom Permata VA Number</string>
     <string name="custom_permata_recipient_enable_title">Enable Custom Permata Recipient</string>
     <string name="format_va_enable_title">Enable Custom %1$s Number</string>
+    <string name="gopay_deeplink_title">Enable GO-PAY Callback Deeplink</string>
 
     <!--SUBCOMPANY-->
     <string name="subcompany_bca_va_disabled">Subcompany for BCA VA Disabled</string>
@@ -208,4 +209,5 @@
     <string name="currency_type_idr">Currency IDR</string>
     <string name="currency_type_sgd">Currency SGD</string>
     <string name="pay_label">Pay</string>
+    <string name="enable">Enabled</string>
 </resources>

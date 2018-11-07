@@ -99,6 +99,7 @@ public class DemoConfigActivity extends AppCompatActivity implements Transaction
     private TextView paymentChannelsTitle;
     private TextView autoReadSmsTitle;
     private TextView currencyTitle;
+    private TextView gopayCallbackTitle;
 
     /**
      * Selection Container
@@ -115,6 +116,7 @@ public class DemoConfigActivity extends AppCompatActivity implements Transaction
     private LinearLayout customPermataRecipientContainer;
     private LinearLayout customBniVaContainer;
     private LinearLayout subCompanyBcaVaContainer;
+    private LinearLayout gopayCallbackContainer;
     private RadioGroup installmentContainer;
     private RadioGroup bniPointContainer;
     private RadioGroup mandiriPointContainer;
@@ -122,6 +124,12 @@ public class DemoConfigActivity extends AppCompatActivity implements Transaction
     private LinearLayout changeInstallmentContainer;
     private RadioGroup autoReadSmsContainer;
     private RadioGroup currencyContainer;
+
+    /**
+     * Radio Button gopay callback
+     */
+    private AppCompatRadioButton gopayCallbackEnabled;
+    private AppCompatRadioButton gopayCallbackDisabled;
 
     /**
      * Radio Button selection for installment
@@ -327,8 +335,8 @@ public class DemoConfigActivity extends AppCompatActivity implements Transaction
         paymentChannelsTitle = findViewById(R.id.title_custom_payment_channels);
         autoReadSmsTitle = findViewById(R.id.title_auto_read_type);
         currencyTitle = findViewById(R.id.title_currency_type);
-
         resetSetting = findViewById(R.id.text_reset);
+        gopayCallbackTitle = findViewById(R.id.title_gopay_callback);
 
         cardClickContainer = findViewById(R.id.credit_card_type_container);
         secureContainer = findViewById(R.id.secure_type_container);
@@ -349,6 +357,10 @@ public class DemoConfigActivity extends AppCompatActivity implements Transaction
         paymentChannelsContainer = findViewById(R.id.payment_channels_type_container);
         autoReadSmsContainer = findViewById(R.id.auto_read_type_container);
         currencyContainer = findViewById(R.id.currency_container);
+        gopayCallbackContainer = findViewById(R.id.gopay_container);
+
+        gopayCallbackEnabled = findViewById(R.id.type_gopay_enabled);
+        gopayCallbackDisabled = findViewById(R.id.type_gopay_disabled);
 
         installmentBniSelection = findViewById(R.id.installment_type_bni);
         installmentMandiriSelection = findViewById(R.id.installment_type_mandiri);
@@ -841,6 +853,29 @@ public class DemoConfigActivity extends AppCompatActivity implements Transaction
                             setTextViewSelectedColor(currencyTitle);
                             setTextViewDrawableLeftColorFilter(currencyTitle);
                             currencyContainer.setVisibility(View.VISIBLE);
+                        } else {
+                            unselectAllTitles();
+                            hideAllSelections();
+                        }
+                    }
+                }, DELAY);
+            }
+        });
+
+        gopayCallbackTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (!gopayCallbackTitle.isSelected()) {
+                            unselectAllTitles();
+                            hideAllSelections();
+                            gopayCallbackTitle.setSelected(true);
+                            setTextViewSelectedColor(gopayCallbackTitle);
+                            setTextViewDrawableLeftColorFilter(gopayCallbackTitle);
+                            // Show GO-PAY callback container
+                            gopayCallbackContainer.setVisibility(View.VISIBLE);
                         } else {
                             unselectAllTitles();
                             hideAllSelections();
@@ -2394,6 +2429,7 @@ public class DemoConfigActivity extends AppCompatActivity implements Transaction
                 mandiriPointOnlyDisabledSelection.setChecked(true);
                 autoReadSmsDisabledSelection.setChecked(true);
                 currencyIdrSelection.setChecked(true);
+                gopayCallbackDisabled.setChecked(true);
                 Toast.makeText(DemoConfigActivity.this, getString(R.string.reset_setting_notification), Toast.LENGTH_SHORT).show();
             }
         });
@@ -2689,6 +2725,10 @@ public class DemoConfigActivity extends AppCompatActivity implements Transaction
         currencyTitle.setSelected(false);
         currencyTitle.setTextColor((ContextCompat.getColor(this, R.color.black)));
         clearTextViewDrawableLeftColorFilter(currencyTitle);
+
+        gopayCallbackTitle.setSelected(false);
+        gopayCallbackTitle.setTextColor((ContextCompat.getColor(this, R.color.black)));
+        clearTextViewDrawableLeftColorFilter(gopayCallbackTitle);
     }
 
     private void hideAllSelections() {
@@ -2711,6 +2751,7 @@ public class DemoConfigActivity extends AppCompatActivity implements Transaction
         paymentChannelsContainer.setVisibility(View.GONE);
         autoReadSmsContainer.setVisibility(View.GONE);
         currencyContainer.setVisibility(View.GONE);
+        gopayCallbackContainer.setVisibility(View.GONE);
     }
 
     private void setTextViewDrawableLeftColorFilter(TextView textView) {
@@ -3246,7 +3287,9 @@ public class DemoConfigActivity extends AppCompatActivity implements Transaction
             );
         }
 
-        transactionRequestNew.setGopay(new Gopay("demo://midtrans"));
+        if (gopayCallbackEnabled.isChecked()) {
+            transactionRequestNew.setGopay(new Gopay("demo://midtrans"));
+        }
 
         return transactionRequestNew;
     }
