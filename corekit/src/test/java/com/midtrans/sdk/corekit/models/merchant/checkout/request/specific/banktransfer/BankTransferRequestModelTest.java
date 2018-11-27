@@ -20,13 +20,7 @@ public class BankTransferRequestModelTest {
 
     @Before
     public void test_setup() {
-        this.bankTransferRequestModel = new BcaBankTransferRequestModel(
-                "",
-                new BcaBankFreeText(
-                        new ArrayList<BcaBankFreeTextLanguage>(),
-                        new ArrayList<BcaBankFreeTextLanguage>()),
-                ""
-        );
+        this.bankTransferRequestModel = new BankTransferRequestModel();
         this.exampleTextPositive = "exampleTextPositive";
         this.exampleTextNegative = "exampleTextNegative";
     }
