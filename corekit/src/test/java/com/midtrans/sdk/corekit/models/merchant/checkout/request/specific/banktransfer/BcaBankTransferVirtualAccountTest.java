@@ -53,14 +53,4 @@ public class BcaBankTransferVirtualAccountTest {
         bcaBankTransferRequestModel.setVaNumber(exampleTextPositive);
         assertNotEquals(bcaBankTransferRequestModel.getVaNumber(), exampleTextNegative);
     }
-
-    @Test
-    public void getSubCompanyCode() {
-
-    }
-
-    @Test
-    public void setSubCompanyCode() {
-
-    }
 }
