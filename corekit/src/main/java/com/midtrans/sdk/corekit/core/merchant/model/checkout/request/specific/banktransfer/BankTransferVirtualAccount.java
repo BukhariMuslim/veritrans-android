@@ -4,14 +4,14 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class BankTransferRequestModel implements Serializable {
+public class BankTransferVirtualAccount implements Serializable {
     @SerializedName("va_number")
     private String vaNumber;
 
-    public BankTransferRequestModel() {
+    public BankTransferVirtualAccount() {
     }
 
-    public BankTransferRequestModel(String vaNumber) {
+    public BankTransferVirtualAccount(String vaNumber) {
         setVaNumber(vaNumber);
     }
 

@@ -9,7 +9,7 @@ import com.midtrans.sdk.corekit.core.merchant.model.checkout.request.optional.Go
 import com.midtrans.sdk.corekit.core.merchant.model.checkout.request.optional.ItemDetails;
 import com.midtrans.sdk.corekit.core.merchant.model.checkout.request.optional.SnapPromo;
 import com.midtrans.sdk.corekit.core.merchant.model.checkout.request.optional.customer.CustomerDetails;
-import com.midtrans.sdk.corekit.core.merchant.model.checkout.request.specific.banktransfer.BankTransferRequestModel;
+import com.midtrans.sdk.corekit.core.merchant.model.checkout.request.specific.banktransfer.BankTransferVirtualAccount;
 import com.midtrans.sdk.corekit.core.merchant.model.checkout.request.specific.banktransfer.BcaBankTransferVirtualAccount;
 import com.midtrans.sdk.corekit.core.merchant.model.checkout.request.specific.creditcard.CreditCard;
 import com.midtrans.sdk.corekit.utilities.Logger;
@@ -87,7 +87,7 @@ public class TransactionRequest implements Serializable {
      * Specific for bank transfer Permata VA
      */
     @SerializedName("permata_va")
-    private BankTransferRequestModel permataVa = null;
+    private BankTransferVirtualAccount permataVa = null;
     /**
      * Contain BCA VA details.
      * Specific for bank transfer BCA VA
@@ -99,7 +99,7 @@ public class TransactionRequest implements Serializable {
      * Specific for bank transfer BNI VA
      */
     @SerializedName("bni_va")
-    private BankTransferRequestModel bniVa = null;
+    private BankTransferVirtualAccount bniVa = null;
     /**
      * Contain credit card details.
      * Specific for credit card
@@ -126,9 +126,9 @@ public class TransactionRequest implements Serializable {
                                String customField3,
                                String userId,
                                SnapPromo promo,
-                               BankTransferRequestModel permataVa,
+                               BankTransferVirtualAccount permataVa,
                                BcaBankTransferVirtualAccount bcaVa,
-                               BankTransferRequestModel bniVa,
+                               BankTransferVirtualAccount bniVa,
                                Map<String, String> customObject) {
         this.transactionDetails = new TransactionDetails(orderId, grossAmount, currency);
         this.gopayDeepLink = new GopayDeepLink(gopayDeepLink);
@@ -184,7 +184,7 @@ public class TransactionRequest implements Serializable {
         return promo;
     }
 
-    public BankTransferRequestModel getPermataVa() {
+    public BankTransferVirtualAccount getPermataVa() {
         return permataVa;
     }
 
@@ -192,7 +192,7 @@ public class TransactionRequest implements Serializable {
         return bcaVa;
     }
 
-    public BankTransferRequestModel getBniVa() {
+    public BankTransferVirtualAccount getBniVa() {
         return bniVa;
     }
 
@@ -248,9 +248,9 @@ public class TransactionRequest implements Serializable {
         private String customField3;
         private String userId;
         private SnapPromo promo;
-        private BankTransferRequestModel permataVa;
+        private BankTransferVirtualAccount permataVa;
         private BcaBankTransferVirtualAccount bcaVa;
-        private BankTransferRequestModel bniVa;
+        private BankTransferVirtualAccount bniVa;
         private Map<String, String> customObject;
 
         private Builder(
@@ -325,7 +325,7 @@ public class TransactionRequest implements Serializable {
             return this;
         }
 
-        public Builder setPermataVa(BankTransferRequestModel permataVa) {
+        public Builder setPermataVa(BankTransferVirtualAccount permataVa) {
             this.permataVa = permataVa;
             return this;
         }
@@ -335,7 +335,7 @@ public class TransactionRequest implements Serializable {
             return this;
         }
 
-        public Builder setBniVa(BankTransferRequestModel bniVa) {
+        public Builder setBniVa(BankTransferVirtualAccount bniVa) {
             this.bniVa = bniVa;
             return this;
         }

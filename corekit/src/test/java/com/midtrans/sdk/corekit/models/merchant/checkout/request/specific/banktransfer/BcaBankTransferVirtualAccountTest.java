@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
-public class BcaBankTransferRequestModelTest {
+public class BcaBankTransferVirtualAccountTest {
 
     private BcaBankTransferVirtualAccount bcaBankTransferRequestModel;
     private String exampleTextPositive, exampleTextNegative;
@@ -54,4 +54,13 @@ public class BcaBankTransferRequestModelTest {
         assertNotEquals(bcaBankTransferRequestModel.getVaNumber(), exampleTextNegative);
     }
 
+    @Test
+    public void getSubCompanyCode() {
+
+    }
+
+    @Test
+    public void setSubCompanyCode() {
+
+    }
 }

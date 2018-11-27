@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class BcaBankTransferVirtualAccount extends BankTransferRequestModel implements Serializable {
+public class BcaBankTransferVirtualAccount extends BankTransferVirtualAccount implements Serializable {
 
     @SerializedName("free_text")
     private BcaBankFreeText freeText;
