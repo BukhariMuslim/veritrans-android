@@ -17,7 +17,7 @@ import com.midtrans.sdk.corekit.core.merchant.model.checkout.request.optional.cu
 import com.midtrans.sdk.corekit.core.merchant.model.checkout.request.optional.customer.ShippingAddress;
 import com.midtrans.sdk.corekit.core.merchant.model.checkout.request.specific.banktransfer.BcaBankFreeText;
 import com.midtrans.sdk.corekit.core.merchant.model.checkout.request.specific.banktransfer.BcaBankFreeTextLanguage;
-import com.midtrans.sdk.corekit.core.merchant.model.checkout.request.specific.banktransfer.BcaBankTransferRequestModel;
+import com.midtrans.sdk.corekit.core.merchant.model.checkout.request.specific.banktransfer.BcaBankTransferVirtualAccount;
 import com.midtrans.sdk.corekit.core.merchant.model.checkout.request.specific.creditcard.CreditCard;
 import com.midtrans.sdk.corekit.core.merchant.model.checkout.request.specific.creditcard.SavedToken;
 import com.midtrans.sdk.corekit.core.merchant.model.checkout.response.CheckoutResponse;
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 .setEnabledPayments(new ArrayList<String>())
                 .setExpiry(new ExpiryModel("", ExpiryModelUnit.EXPIRY_UNIT_DAY, 1))
                 .setItemDetails(new ArrayList<ItemDetails>())
-                .setBcaVa(new BcaBankTransferRequestModel("",
+                .setBcaVa(new BcaBankTransferVirtualAccount("",
                         new BcaBankFreeText(new ArrayList<BcaBankFreeTextLanguage>(),
                                 new ArrayList<BcaBankFreeTextLanguage>()),
                         ""))

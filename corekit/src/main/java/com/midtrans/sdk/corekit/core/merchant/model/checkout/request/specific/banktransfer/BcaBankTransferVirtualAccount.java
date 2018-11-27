@@ -4,24 +4,24 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class BcaBankTransferRequestModel extends BankTransferRequestModel implements Serializable {
+public class BcaBankTransferVirtualAccount extends BankTransferRequestModel implements Serializable {
 
     @SerializedName("free_text")
     private BcaBankFreeText freeText;
     @SerializedName("sub_company_code")
     private String subCompanyCode;
 
-    public BcaBankTransferRequestModel(String vaNumber, BcaBankFreeText freeText, String subCompanyCode) {
+    public BcaBankTransferVirtualAccount(String vaNumber, BcaBankFreeText freeText, String subCompanyCode) {
         super(vaNumber);
         this.freeText = freeText;
         this.subCompanyCode = subCompanyCode;
     }
 
-    public BcaBankTransferRequestModel(String vaNumber) {
+    public BcaBankTransferVirtualAccount(String vaNumber) {
         super(vaNumber);
     }
 
-    public BcaBankTransferRequestModel(String vaNumber, BcaBankFreeText freeText) {
+    public BcaBankTransferVirtualAccount(String vaNumber, BcaBankFreeText freeText) {
         super(vaNumber);
         this.freeText = freeText;
     }

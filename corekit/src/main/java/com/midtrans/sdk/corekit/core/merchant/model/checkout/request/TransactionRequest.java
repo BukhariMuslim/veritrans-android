@@ -10,7 +10,7 @@ import com.midtrans.sdk.corekit.core.merchant.model.checkout.request.optional.It
 import com.midtrans.sdk.corekit.core.merchant.model.checkout.request.optional.SnapPromo;
 import com.midtrans.sdk.corekit.core.merchant.model.checkout.request.optional.customer.CustomerDetails;
 import com.midtrans.sdk.corekit.core.merchant.model.checkout.request.specific.banktransfer.BankTransferRequestModel;
-import com.midtrans.sdk.corekit.core.merchant.model.checkout.request.specific.banktransfer.BcaBankTransferRequestModel;
+import com.midtrans.sdk.corekit.core.merchant.model.checkout.request.specific.banktransfer.BcaBankTransferVirtualAccount;
 import com.midtrans.sdk.corekit.core.merchant.model.checkout.request.specific.creditcard.CreditCard;
 import com.midtrans.sdk.corekit.utilities.Logger;
 
@@ -93,7 +93,7 @@ public class TransactionRequest implements Serializable {
      * Specific for bank transfer BCA VA
      */
     @SerializedName("bca_va")
-    private BcaBankTransferRequestModel bcaVa = null;
+    private BcaBankTransferVirtualAccount bcaVa = null;
     /**
      * Contain BNI VA details.
      * Specific for bank transfer BNI VA
@@ -127,7 +127,7 @@ public class TransactionRequest implements Serializable {
                                String userId,
                                SnapPromo promo,
                                BankTransferRequestModel permataVa,
-                               BcaBankTransferRequestModel bcaVa,
+                               BcaBankTransferVirtualAccount bcaVa,
                                BankTransferRequestModel bniVa,
                                Map<String, String> customObject) {
         this.transactionDetails = new TransactionDetails(orderId, grossAmount, currency);
@@ -188,7 +188,7 @@ public class TransactionRequest implements Serializable {
         return permataVa;
     }
 
-    public BcaBankTransferRequestModel getBcaVa() {
+    public BcaBankTransferVirtualAccount getBcaVa() {
         return bcaVa;
     }
 
@@ -249,7 +249,7 @@ public class TransactionRequest implements Serializable {
         private String userId;
         private SnapPromo promo;
         private BankTransferRequestModel permataVa;
-        private BcaBankTransferRequestModel bcaVa;
+        private BcaBankTransferVirtualAccount bcaVa;
         private BankTransferRequestModel bniVa;
         private Map<String, String> customObject;
 
@@ -330,7 +330,7 @@ public class TransactionRequest implements Serializable {
             return this;
         }
 
-        public Builder setBcaVa(BcaBankTransferRequestModel bcaVa) {
+        public Builder setBcaVa(BcaBankTransferVirtualAccount bcaVa) {
             this.bcaVa = bcaVa;
             return this;
         }
